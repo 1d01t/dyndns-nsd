@@ -1,0 +1,39 @@
+# HTTPS certificates
+HTTPS:
+  tls-sui: "../tls.crt"
+  tls-crt: "../tls.crt"
+  tls-key: "../tls.key"
+
+# Database credentials
+Database:
+  host: "localhost"
+  port: 5432
+  user: "<POSTGRES-USER>"
+  pass: "<POSTGRES-PWD>"
+  dbname: "<POSTGRES-DB>"
+
+# ban ip config  3600sec = 1h
+BanIP:
+  unbanCheck: 10	# time to sleep until checking for unban
+  maxTry: 20		# alowed failed tryes bevor ban ip
+  banSeconds: 10800	# for how long should ip be banned
+  logTime: 10800	# failed tryes < maxTry are saved until removed
+
+# files path
+Files:
+  logfile: "/var/log/dyndns-handler.log"
+  zonefile: "/var/nsd/zones/master/<DOMAIN-ZONE>.forward"
+
+# serial identifier in zonefile (placed after serial number in the same line)
+Identifier:
+  serialfinder: "; serial number"
+
+# sign zone
+Singning:
+  zonesigner: "/usr/local/bin/ldns-signzone"
+  ksk: "/var/nsd/zones/master/<KSK-KEY-FILE>"
+  zsk: "/var/nsd/zones/master/<ZSK-KEY-FILE>"
+
+# Domain name
+Domain:
+  name: ".<DOMAINNAME-HERE>"
